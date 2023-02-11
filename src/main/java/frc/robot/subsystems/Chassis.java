@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Constants;
 
@@ -29,10 +31,16 @@ public class Chassis extends SubsystemBase{
     //初始化設定 方法的一種
     }
 
-    public void move(double y,double z) {
-        m_robotDrive.arcadeDrive(y, z);
-    }
-    public void slide(){
-        
-    }
+    // public void move(double y,double z) {     /////
+    //     m_robotDrive.arcadeDrive(y, z);
+    // }
+    public void lime_move(){
+        m_leftmotor.set(ControlMode.PercentOutput, 0.1);
+        m_rightmotor.set(ControlMode.PercentOutput, 0.1);
+      }
+    
+      public void lime_stop(){
+        m_leftmotor.set(ControlMode.PercentOutput, 0);
+        m_rightmotor.set(ControlMode.PercentOutput, 0);
+      }
 }
