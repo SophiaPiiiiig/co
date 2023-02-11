@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.limelightex;
+import frc.robot.subsystems.Limelight;
 
 /**
  * This is a demo program showing the use of the DifferentialDrive class. Runs the motors with
@@ -44,11 +44,11 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-    double limez = limelightex.getrobot_ilmelight()[2];
+    double limez = Limelight.getrobot_ilmelight()[2];
 
     CommandScheduler.getInstance().run();
-    SmartDashboard.putNumber("ID", limelightex.getAprilID());
-      SmartDashboard.putNumberArray("Position", limelightex.getrobot_ilmelight());
+    SmartDashboard.putNumber("ID", Limelight.getAprilID());
+      SmartDashboard.putNumberArray("Position", Limelight.getrobot_ilmelight());
       if (0.65 < limez && limez < 0.75){
         chassis.lime_stop();
       }
