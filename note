@@ -1,0 +1,7 @@
+private從外面就找不到，例如Arm裡面的去Chassis就找不到
+public從哪裡都得到
+public class 是 class(貓、狗)，可以繼承 SubsystemBase(動物)等
+static 是可以直接用類別去動作，通常是用在不必要創建很多物件，例如limelight(只有一個)
+final是不可變更的常量(例如數字)
+public _____ 是方法(有點不同)的一種，可設定初始值例如config、Inverted、follow
+protect是單一package可以用，外面的不能
