@@ -7,7 +7,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class limelightex extends SubsystemBase{
-    private static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight_unicorn");
+    private static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     private static NetworkTableEntry aprilID = table.getEntry("tid");
     private static NetworkTableEntry botpose = table.getEntry("botpose");
     private static NetworkTableEntry bot_limelight = table.getEntry("targetpose_robotspace");
@@ -22,20 +22,4 @@ public class limelightex extends SubsystemBase{
         double a_ID = aprilID.getDouble(-1);
         return a_ID;
     }
-    
-    // public static double getdistance(){
-    //     double distance = 
-    // }
-
-    @Override
-    public void periodic(){
-        SmartDashboard.putNumber("horses", getAprilID());
-        SmartDashboard.putNumberArray("Position", getrobot_ilmelight());
-        if (getrobot_ilmelight()[2] >= 0.7){
-            chasis.lime_move();
-        } 
-        else if (getrobot_ilmelight()[2] < 0.7){
-            chasis.lime_stop();
-        }
-    }   
 }

@@ -5,8 +5,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.limelightex;
 
 /**
  * This is a demo program showing the use of the DifferentialDrive class. Runs the motors with
@@ -15,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
+  Chassis chassis = new Chassis();
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -40,7 +44,20 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+    double limez = limelightex.getrobot_ilmelight()[2];
+
     CommandScheduler.getInstance().run();
+    SmartDashboard.putNumber("ID", limelightex.getAprilID());
+      SmartDashboard.putNumberArray("Position", limelightex.getrobot_ilmelight());
+      if (0.65 < limez && limez < 0.75){
+        chassis.lime_stop();
+      }
+      else if (limez > 0.75){
+          chassis.limef_move();
+      } 
+      else if (limez < 0.65){
+          chassis.limeb_move();
+      }
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

@@ -13,16 +13,24 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final int leftmasterno = 3;
-    //左前
-    public static final int leftslaverno = 4;
-    //左後
-    public static final int rightmasterno = 5;
-    //右前
-    public static final int rightslaverno = 2;
+    // public static final int leftmasterno = 3;
+    // //左前
+    // public static final int leftslaverno = 4;
+    // //左後
+    // public static final int rightmasterno = 5;
+    // //右前
+    // public static final int rightslaverno = 2;
     //右後
     public static final int intakemotorno = 6;
-    public static final int armmotorno = 1;    
+    public static final int armmotorno = 0;    
     //腳位 記得要改
     //final是不可變更的常量
+
+    public static final int leftmasterno = 1;
+    //左前
+    public static final int leftslaverno = 3;
+    //左後
+    public static final int rightmasterno = 4;
+    //右前
+    public static final int rightslaverno = 2;
 }
