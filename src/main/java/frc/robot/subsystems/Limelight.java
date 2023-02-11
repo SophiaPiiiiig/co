@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Limelight extends SubsystemBase {
     private static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight-unicorn");
-    private static NetworkTableEntry pos = table.getEntry("botpose");
     private static NetworkTableEntry aprilID = table.getEntry("tid");
     double[] a_pos = new double[4];
     
