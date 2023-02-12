@@ -15,6 +15,7 @@ import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Intake;
 // import frc.robot.subsystems.Solenoid;
+import frc.robot.subsystems.Limelight;
 
 
 /**
@@ -28,8 +29,10 @@ public class RobotContainer {
   private Chassis chassis = new Chassis();
   private Intake suck = new Intake();
   private Arm arm = new Arm();
+  private Limelight limelight = new Limelight();
   // private final Solenoid solenoid = new Solenoid();
   //private只能在這裡被找到，去Arm或Chassis就找不到了
+  //Double Solenoid若未被偵測到deploy時會報錯
   
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -40,15 +43,20 @@ public class RobotContainer {
   public RobotContainer(){
     configureButtonBindings();
     chassis();
+    limelight();
   }
   private void chassis(){
     
-    // chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
-    //                                               joystick.getY()*0.6,   
-    //                                               joystick.getZ()*0.5);},
-    //                                               chassis));
-                                                  //move的參數放進中間藍色小括號
+    chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
+                                                  joystick.getY()*0.6,   
+                                                  joystick.getZ()*0.5);},
+                                                  chassis));
+                                                //move的參數放進中間藍色小括號                                                
   }
+  private void limelight(){
+    limelight.setDefaultCommand(Commands.runEnd(null, null, null));
+  }
+
   private void configureButtonBindings() {
 
     new JoystickButton(joystick, 1)      .whileTrue(Commands.run(arm::a_up,arm))
@@ -65,11 +73,13 @@ public class RobotContainer {
 
     new JoystickButton(joystick, 4)      .whileTrue(Commands.run(suck::shoot, suck))
                                                           .whileFalse(Commands.runOnce(suck::stop, suck));                                                      
-    // 射
+    //射
     // new JoystickButton(joystick, 5)      .whileTrue(Commands.run(solenoid::solenlong,solenoid));
     // //伸
     // new JoystickButton(joystick, 6)      .whileTrue(Commands.run(solenoid::solenshort,solenoid));
-    // // 縮                            
+    // //縮 
+    new JoystickButton(joystick, 7)      .whileTrue(Commands.run(limelight::limecorrectz, limelight));
+                                
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *

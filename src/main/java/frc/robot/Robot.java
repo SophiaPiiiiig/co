@@ -44,20 +44,7 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-    double limez = Limelight.getrobot_ilmelight()[2];
-
     CommandScheduler.getInstance().run();
-    SmartDashboard.putNumber("ID", Limelight.getAprilID());
-      SmartDashboard.putNumberArray("Position", Limelight.getrobot_ilmelight());
-      if (0.65 < limez && limez < 0.75){
-        chassis.lime_stop();
-      }
-      else if (limez > 0.75){
-          chassis.limef_move();
-      } 
-      else if (limez < 0.65){
-          chassis.limeb_move();
-      }
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
