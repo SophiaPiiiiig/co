@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
@@ -27,7 +28,7 @@ import frc.robot.subsystems.Limelight;
 public class RobotContainer {
   private Joystick joystick = new Joystick(1);
   private Chassis chassis = new Chassis();
-  private Intake suck = new Intake();
+  private Intake intake = new Intake();
   private Arm arm = new Arm();
   private Limelight limelight = new Limelight();
   // private final Solenoid solenoid = new Solenoid();
@@ -45,16 +46,15 @@ public class RobotContainer {
     chassis();
     limelight();
   }
-  private void chassis(){
-    
+  private void chassis(){  
     chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
                                                   joystick.getY()*0.6,   
                                                   joystick.getZ()*0.5);},
                                                   chassis));
-                                                //move的參數放進中間藍色小括號                                                
+                                                  //move的參數放進中間藍色小括號                                                
   }
   private void limelight(){
-    limelight.setDefaultCommand(Commands.runEnd(null, null, null));
+    limelight.setDefaultCommand(Commands.run(limelight::shuffleboard,limelight));
   }
 
   private void configureButtonBindings() {
@@ -67,12 +67,12 @@ public class RobotContainer {
                                                           .whileFalse(Commands.runOnce(arm::a_stop, arm));
     //手臂下降
 
-    new JoystickButton(joystick, 3)      .whileTrue(Commands.run(suck::suck, suck))
-                                                          .whileFalse(Commands.runOnce(suck::shoot, suck));
+    new JoystickButton(joystick, 3)      .whileTrue(Commands.run(intake::suck, intake))
+                                                          .whileFalse(Commands.runOnce(intake::shoot, intake));
     //吸
 
-    new JoystickButton(joystick, 4)      .whileTrue(Commands.run(suck::shoot, suck))
-                                                          .whileFalse(Commands.runOnce(suck::stop, suck));                                                      
+    new JoystickButton(joystick, 4)      .whileTrue(Commands.run(intake::shoot, intake))
+                                                          .whileFalse(Commands.runOnce(intake::stop, intake));                                                      
     //射
     // new JoystickButton(joystick, 5)      .whileTrue(Commands.run(solenoid::solenlong,solenoid));
     // //伸
