@@ -14,7 +14,7 @@ public class Chassis extends SubsystemBase{
     WPI_VictorSPX m_rightmotor = new WPI_VictorSPX(Constants.rightmasterno);
     WPI_VictorSPX s_leftmotor = new WPI_VictorSPX(Constants.leftslaverno);
     WPI_VictorSPX s_rightmotor = new WPI_VictorSPX(Constants.rightslaverno);
-    DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftmotor, m_rightmotor);
+    // DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftmotor, m_rightmotor);
 
     public Chassis() {
       m_leftmotor.configFactoryDefault();
@@ -30,12 +30,9 @@ public class Chassis extends SubsystemBase{
     //需跟class同名
     //初始化設定 方法的一種
     }
-
+    
     public void move(double y,double z) {     
-        m_robotDrive.arcadeDrive(y, z);
-    }
-    public void adjust(double tz,double tx){
-      m_robotDrive.arcadeDrive(tz,tx);
+        // m_robotDrive.arcadeDrive(y, z);
     }
 
     public void limef_move(){

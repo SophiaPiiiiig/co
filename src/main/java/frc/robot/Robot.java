@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -19,6 +22,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
   Chassis chassis = new Chassis();
+  static boolean aaa = true;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -82,7 +86,30 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    // Function a;
+    // int i = 0;
+    // switch(i){
+    //   case 0:
+    //     aaa = true;
+    //     i++;
+    //   case 1:
+    //     aaa = true;
+    //     i++;
+    //   case 2:
+    //     aaa = true;
+    //     i++;
+    //   case 3:
+    //     aaa = false;
+    //     i++;
+    //   case 4:
+    //     aaa = false;
+    //     i++;
+    //   case 5:
+    //     aaa = false;
+    //     i++;
+    // } 
+  }
 
   @Override
   public void testInit() {

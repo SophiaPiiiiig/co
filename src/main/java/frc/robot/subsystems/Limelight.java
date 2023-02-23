@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -13,6 +12,9 @@ public class Limelight extends SubsystemBase{
     private static NetworkTableEntry bot_limelight = table.getEntry("targetpose_robotspace");
     private static Chassis chassis = new Chassis();
     
+    /**
+     * @return 機器人位置 tx ty tz rx ry rz
+     */
     public static double[] getrobot_ilmelight(){
         double[] pose = bot_limelight.getDoubleArray(new double[6]);
         return pose;
@@ -49,14 +51,8 @@ public class Limelight extends SubsystemBase{
             chassis.limeb_move();
         }
     }
-    public void limecorrect(){
-
-    }
-
-    public void limeOK(){
-       
-    }
-    protected void shuffleboard(){
+    
+    public void shuffleboard(){
         SmartDashboard.putNumber("ID", Limelight.getAprilID());
         SmartDashboard.putNumberArray("Position", Limelight.getrobot_ilmelight());
     }

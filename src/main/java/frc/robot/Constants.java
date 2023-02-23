@@ -33,4 +33,6 @@ public final class Constants {
     public static final int rightmasterno = 4;
     //右前
     public static final int rightslaverno = 2;
+    //右後
+    public static final int candleno = 5;
 }

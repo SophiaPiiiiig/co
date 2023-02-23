@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.led.CANdle;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -13,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Candle;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Intake;
 // import frc.robot.subsystems.Solenoid;
@@ -31,6 +34,7 @@ public class RobotContainer {
   private Intake intake = new Intake();
   private Arm arm = new Arm();
   private Limelight limelight = new Limelight();
+  private Candle candle = new Candle();
   // private final Solenoid solenoid = new Solenoid();
   //private只能在這裡被找到，去Arm或Chassis就找不到了
   //Double Solenoid若未被偵測到deploy時會報錯
@@ -79,6 +83,14 @@ public class RobotContainer {
     // new JoystickButton(joystick, 6)      .whileTrue(Commands.run(solenoid::solenshort,solenoid));
     // //縮 
     new JoystickButton(joystick, 7)      .whileTrue(Commands.run(limelight::limecorrectz, limelight));
+
+    // new JoystickButton(joystick, 8)      .onTrue(Commands.either(Commands.run(candle::red,candle), Commands.run(candle::l_stop, candle), Robot.aaa));
+    new JoystickButton(joystick, 8)      .onTrue(Commands.run(candle::red, candle));
+
+    new JoystickButton(joystick, 9)      .onTrue(Commands.run(candle::green, candle));
+
+    new JoystickButton(joystick, 10)      .onTrue(Commands.run(candle::blue, candle));
+
                                 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -86,7 +98,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   }
-  public Command getAutonomousCommand() {
+  Command getAutonomousCommand() {
     return null;
   }
 }
