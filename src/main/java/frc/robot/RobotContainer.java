@@ -4,15 +4,14 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.led.CANdle;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.JoystickSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Candle;
@@ -85,11 +84,13 @@ public class RobotContainer {
     new JoystickButton(joystick, 7)      .whileTrue(Commands.run(limelight::limecorrectz, limelight));
 
     // new JoystickButton(joystick, 8)      .onTrue(Commands.either(Commands.run(candle::red,candle), Commands.run(candle::l_stop, candle), Robot.aaa));
-    new JoystickButton(joystick, 8)      .onTrue(Commands.run(candle::red, candle));
+    new JoystickButton(joystick, 8)      .whileTrue(Commands.run(candle::red, candle));
 
-    new JoystickButton(joystick, 9)      .onTrue(Commands.run(candle::green, candle));
+    new JoystickButton(joystick, 9)      .whileTrue(Commands.run(candle::green, candle));
 
-    new JoystickButton(joystick, 10)      .onTrue(Commands.run(candle::blue, candle));
+    new JoystickButton(joystick, 10)      .whileTrue(Commands.run(candle::blue, candle));
+
+    new JoystickButton(joystick,11)       .whileTrue(Commands.run(candle::a_strobe, candle));
 
                                 
   /**
