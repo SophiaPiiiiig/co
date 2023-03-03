@@ -10,13 +10,15 @@ import com.ctre.phoenix.led.CANdle.LEDStripType;
 
 public class Candle extends SubsystemBase{
     CANdle m_candle = new CANdle(Constants.candleno);
-    StrobeAnimation a_strobe = new StrobeAnimation(95, 69, 200);
+    StrobeAnimation a_strobe = new StrobeAnimation(0, 0, 0);
+    //頻閃動畫
 
     public Candle(){
         m_candle.configFactoryDefault(0);
         m_candle.clearAnimation(0);
         m_candle.setLEDs(0, 0, 0);
         m_candle.configLEDType(LEDStripType.BRG);
+        //12V燈條的色號
         m_candle.configBrightnessScalar(0.15);
     }
     public void red(){
@@ -38,6 +40,7 @@ public class Candle extends SubsystemBase{
         a_strobe.setR(85);
         a_strobe.setB(190);
         a_strobe.setG(59);
+        //淡紫色
     }
     public void move_light(double y){
         if(y < -0.1){
