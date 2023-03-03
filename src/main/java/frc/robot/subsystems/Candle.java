@@ -10,25 +10,51 @@ import com.ctre.phoenix.led.CANdle.LEDStripType;
 
 public class Candle extends SubsystemBase{
     CANdle m_candle = new CANdle(Constants.candleno);
-    StrobeAnimation a_strobe = new StrobeAnimation(85, 59, 190,0, 0.8, 12);
+    StrobeAnimation a_strobe = new StrobeAnimation(95, 69, 200);
 
     public Candle(){
         m_candle.configFactoryDefault(0);
         m_candle.clearAnimation(0);
         m_candle.setLEDs(0, 0, 0);
-        m_candle.configLEDType(LEDStripType.GRB);
-        m_candle.configBrightnessScalar(0.6);
+        m_candle.configLEDType(LEDStripType.BRG);
+        m_candle.configBrightnessScalar(0.15);
     }
     public void red(){
+        m_candle.clearAnimation(0);
         m_candle.setLEDs(255, 0, 0);
     }
     public void green(){
+        m_candle.clearAnimation(0);
         m_candle.setLEDs(0, 255, 0);
     }
     public void blue() {
+        m_candle.clearAnimation(0);
         m_candle.setLEDs(0,0,255);
     }
     public void a_strobe(){
         m_candle.animate(a_strobe);
+        a_strobe.setNumLed(59);
+        a_strobe.setSpeed(0.1);
+        a_strobe.setR(85);
+        a_strobe.setB(190);
+        a_strobe.setG(59);
+    }
+    public void move_light(double y){
+        if(y < -0.1){
+            m_candle.clearAnimation(0);
+            m_candle.setLEDs(0, 255, 0);
+        }
+        else if(y > 0.15){
+            m_candle.animate(a_strobe);
+            a_strobe.setR(255);
+            a_strobe.setB(0);
+            a_strobe.setG(0);
+            a_strobe.setNumLed(59);
+            a_strobe.setSpeed(y*0.6);
+        }
+        else{
+            m_candle.clearAnimation(0);
+            m_candle.setLEDs(0, 0, 0);
+        }
     }
 }

@@ -48,16 +48,20 @@ public class RobotContainer {
     configureButtonBindings();
     chassis();
     limelight();
+    candlemove();
   }
   private void chassis(){  
-    chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
-                                                  joystick.getY()*0.6,   
-                                                  joystick.getZ()*0.5);},
-                                                  chassis));
+    // chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
+    //                                               joystick.getY()*0.6,   
+    //                                               joystick.getZ()*0.5);},
+    //                                               chassis));
                                                   //move的參數放進中間藍色小括號                                                
   }
   private void limelight(){
     limelight.setDefaultCommand(Commands.run(limelight::shuffleboard,limelight));
+  }
+  private void candlemove(){
+    candle.setDefaultCommand(Commands.run(() -> candle.move_light(joystick.getY()),candle));
   }
 
   private void configureButtonBindings() {
