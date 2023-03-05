@@ -51,10 +51,10 @@ public class RobotContainer {
     candlemove();
   }
   private void chassis(){  
-    // chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
-    //                                               joystick.getY()*0.6,   
-    //                                               joystick.getZ()*0.5);},
-    //                                               chassis));
+    chassis.setDefaultCommand(Commands.run(() -> {chassis.move(                   
+                                                  joystick.getY()*0.6,   
+                                                  joystick.getZ()*0.5);},
+                                                  chassis));
                                                   //move的參數放進中間藍色小括號                                                
   }
   private void limelight(){

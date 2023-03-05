@@ -26,13 +26,13 @@ public final class Constants {
     //腳位 記得要改
     //final是不可變更的常量
 
-    public static final int leftmasterno = 1;
+    public static final int leftmasterno = 2;
     //左前
-    public static final int leftslaverno = 3;
+    public static final int leftslaverno = 5;
     //左後
     public static final int rightmasterno = 4;
     //右前
-    public static final int rightslaverno = 2;
+    public static final int rightslaverno = 1;
     //右後
     public static final int candleno = 5;
 }
